@@ -1,10 +1,10 @@
 import './MemoryCard.css'
 import { useState } from 'react'
 
-const MemoryCard = () => {
-    const [isFlipped, setIsFlipped] = useState(false)
+const MemoryCard = (props) => {
+    const [isFlippedLocal, setIsFlipped] = useState(props.isFlipped)
     const clickHandler = () => {
-        if(!isFlipped){
+        if(!isFlippedLocal){
             setIsFlipped(true)
         }else{
             setIsFlipped(false) 
@@ -13,12 +13,12 @@ const MemoryCard = () => {
     }
     return ( 
         <div className='MemoryCard' onClick={ clickHandler }>
-        <div className={ isFlipped ? 'MemoryCardInner flipped' : 'MemoryCardInner'}>
+        <div className={ isFlippedLocal ? 'MemoryCardInner flipped' : 'MemoryCardInner'}>
             <div className="MemoryCardBack">
                 <img className='logo' src="https://www.digitalcrafts.com/media/Default/assets/logos/dc-logo.svg" alt="" />
             </div>
             <div className='MemoryCardFront'>
-                YOO
+                {props.symbol}
             </div>
         </div>
 
